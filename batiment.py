@@ -1,4 +1,5 @@
-from .infrastructure import *
+import infrastructure 
+
 class Batiment:
   def __init__(self,reseau):
     self.id_bat=reseau.id_batiment

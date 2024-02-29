@@ -1,15 +1,13 @@
-class infra:
-  def __init__(self,infra_id,infra_type,longueur):
-    self.id_inf=infra_id
-    self.type=infra_type
-    self.long=longueur
-    self.nb_mais=0
- 
-  def total_maison(self,reseau):
-    infras=reseau.groupby('infra_id')
-    return infras["nb_maisons"].transform('sum')
-  
-  def diff_infra(reseau):
-    diff=reseau["longueur"]/reseau["nb_maison_total"]
-    return diff
-  
+import pandas as pd
+
+class Infrastructure:
+    def __init__(self, dataset):
+        self.dataset = dataset
+
+    def sum_maisons_par_infra(self):
+        infras = self.dataset.df.groupby('infra_id')
+        self.dataset.df["nb_maison_total"] = infras["nb_maisons"].transform('sum')
+
+    def calcul_diff_infra(self):
+        self.dataset.df["diff_infra"] = self.dataset.df["longueur"] / self.dataset.df["nb_maison_total"]
+        self.dataset.df.loc[self.dataset.df['infra_type'] == 'infra_intacte', 'diff_infra'] = 0

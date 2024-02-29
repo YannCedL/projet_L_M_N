@@ -1,14 +1,12 @@
-class DataFrameBatiments:
-    def __init__(self, data):
-        self.data = data
+import pandas as pd
 
-    def determiner_ordre_rehabilitation(self):
-        # Trier les bâtiments par la valeur de longueur en ordre croissant
-        sorted_batiments = sorted(self.data, key=lambda x: x.diff_bat)
-        # Extraire les identifiants des bâtiments dans l'ordre de réhabilitation
-        ordre_rehabilitation = [batiment.id_batiment for batiment in sorted_batiments]
-        return ordre_rehabilitation
-    
-    def verif_type(self):
-        self.loc[self['infra_type'] == 'infra_intacte', 'diff_bat'] =0 
-  
+class Dataset:
+    def __init__(self, file_path):
+        self.df = pd.read_csv(file_path)
+
+    def get_df_bat_diff(self):
+        df_bat_diff = self.df[['id_batiment', 'diff_bat']]
+        df_bat_diff = df_bat_diff.drop_duplicates()
+        df_bat_diff = df_bat_diff.sort_values(by='diff_bat')
+        df_bat_diff = df_bat_diff[df_bat_diff['diff_bat'] > 0]
+        return df_bat_diff

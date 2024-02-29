@@ -1,5 +1,12 @@
 from packages.infra import Infra
+from packages.batiment import Batiment
+
 
 #Cette fonction permet de créer une liste d'objets de type Infra à partir des données du Dataframe
 def infra_list(df) -> list:
-    return list(map(lambda row: Infra(infra_id=row[1], nb_houses=row[2], infra_type=row[3], length=row[4]), df.values.tolist()))
+    infra_objects = df.apply(lambda row: Infra(*row.to_list()), axis=1)
+    return list(infra_objects)
+    
+def batiments_list(df) -> list:
+    bat_objects = df.apply(lambda row: Batiment(id_building = row[0], list_infras= row[2]), axis=1)
+    return list(bat_objects)

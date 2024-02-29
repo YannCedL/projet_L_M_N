@@ -1,7 +1,7 @@
 # Création de la classe infrastructure
 class Infra:
     #Création des attributs d'instances
-    def __init__(self, infra_id, length,infra_type, nb_houses ) -> None:
+    def __init__(self, infra_id,nb_houses,infra_type,length ) -> None:
         self.infra_id = infra_id
         self.nb_houses = nb_houses
         self.infra_type = infra_type

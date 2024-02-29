@@ -1,4 +1,5 @@
 import  planification
+
 #import batiment
 #import infrastructure
 
@@ -7,4 +8,16 @@ import  planification
 chemin_du_csv = "./reseau_en_arbre.csv"
 
 
+
+
 planification_object = planification.Planification(chemin_du_csv)
+
+#planification_object.run()
+planification_object.info()
+
+
+
+
+
+
+

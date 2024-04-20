@@ -2,9 +2,9 @@
 BUT: Propostion d'un algorithme permettant de raccorder les batiments et/ou infrastructures d'une ville
 
 AVEC: 
-Yann LAVRY 
-Sandrine NOKAM
-Cherif MOUNCHILI
+- Yann LAVRY 
+- Sandrine NOKAM
+- Cherif MOUNCHILI
 
 #### Au sommaire:
 
